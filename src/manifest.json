@@ -1,0 +1,36 @@
+{
+   "content_scripts": [ 
+
+      {
+         "all_frames": false,
+         "js": ["multiGraph.js"],
+         "matches": ["http://codeforces.com/profile/*", "http://www.codeforces.com/profile/*"],
+         "run_at": "document_idle"
+      },
+
+      {
+         "all_frames": false,
+         "js": ["colorizeStandings.js"],
+         "matches": ["http://codeforces.com/contest/*/standings*", "http://www.codeforces.com/contest/*/standings*", "http://www.codeforces.com/contest/*/room/*", "http://codeforces.com/contest/*/room/*", "http://www.codeforces.com/gym/*/standings*", "http://codeforces.com/gym/*/standings*"],
+         "run_at": "document_idle"
+      },
+
+      {
+         "all_frames": false,
+         "js": ["hideSolved.js"],
+         "matches": ["http://codeforces.com/problemset*", "http://www.codeforces.com/problemset*"],
+         "run_at": "document_idle"
+      }
+
+   ],
+   "description": "Makes Codeforces better: multiple ratings graph, colorizes standings, adds \"Hide/Show solved problems\" link",
+   "icons": {
+      "16": "logo_16x16.png",
+      "48": "logo_48x48.png",
+      "128": "logo_128x128.png"
+   },
+   "manifest_version": 2,
+   "name": "Codeforces Enhancer",
+   "permissions": ["tabs"],
+   "version": "1.0.1"
+}
