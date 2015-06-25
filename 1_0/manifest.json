@@ -23,7 +23,7 @@
       }
 
    ],
-   "description": "Makes Codeforces better: supports multiple ratings graph, colorizes standings by used programming languages, adds \"Hide/Show solved problems\" link to Problemset page",
+   "description": "Makes Codeforces better: multiple ratings graph, colorizes standings, adds \"Hide/Show solved problems\" link",
    "icons": {
       "16": "logo_16x16.png",
       "48": "logo_48x48.png",

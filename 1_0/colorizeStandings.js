@@ -100,7 +100,21 @@ function colorize()
 		var key = 'colorize_standings_cf_' + spec[i][1];
 		var names = toarray(spec[i][0]);
 		for(var j = 0; j < names.length; ++j) {
-			$('td[title$="'+ names[j] + '"]').addClass(spec[i][1]);
+			var alltd = $('td[title$="'+ names[j] + '"]');
+			alltd.each(function() {
+				var s = $(this).attr("title"), x, y;
+				for (x = s.length - 1; x >= 0 && s[x] != ','; --x) {}
+				if (x > 0) {
+					for (y = x - 1; y >= 0 && s[y] != '+'; --y) {}
+					++y;
+					var val = $(this).find(".cell-time").html(), attempts = "0";
+					if (y < x) {
+						attempts = s.substring(y, x);
+					}
+					$(this).find(".cell-time").html(val + " (" + attempts + ")");
+				}
+			});
+			alltd.addClass(spec[i][1]);
 		}
 		if(Codeforces.getCookie(key) == 1) {
 			$('td.'+ spec[i][1]).addClass('highlight-by-lang');
