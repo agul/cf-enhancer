@@ -18,7 +18,7 @@
       {
          "all_frames": false,
          "js": ["hideSolved.js"],
-         "matches": ["http://codeforces.com/problemset*", "http://www.codeforces.com/problemset*"],
+         "matches": ["http://codeforces.com/problemset", "http://www.codeforces.com/problemset", "http://www.codeforces.com/problemset/page/*", "http://codeforces.com/problemset/page/*"],
          "run_at": "document_idle"
       }
 
