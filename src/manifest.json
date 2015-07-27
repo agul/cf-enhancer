@@ -31,8 +31,10 @@
    },
    "manifest_version": 2,
    "name": "Codeforces Enhancer",
+   "short_name": "CF Enhancer",
    "permissions": ["tabs", "storage"],
-   "version": "1.0.3",
+   "version": "1.1.1",
+   "options_page": "options_page.html",
    "options_ui": {
     "page": "options.html",
     "chrome_style": true
