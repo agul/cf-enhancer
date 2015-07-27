@@ -12,9 +12,17 @@ function toggle() {
 	toggleLink.innerHTML = (show ? "Hide" : "Show") + " solved problems";
 };
 
-toggleLink.innerHTML = "Hide solved problems";
-toggleLink.href = "#";
-toggleLink.addEventListener("click", toggle, false, true);
+function runScript() {
+	toggleLink.innerHTML = "Hide solved problems";
+	toggleLink.href = "#";
+	toggleLink.addEventListener("click", toggle, false, true);
 
-var searchBlock = document.getElementsByClassName("closed")[0];
-searchBlock.parentNode.insertBefore(toggleLink, searchBlock);
+	var searchBlock = document.getElementsByClassName("closed")[0];
+	searchBlock.parentNode.insertBefore(toggleLink, searchBlock);
+}
+
+getOption("hideSolved", function(option, result) {
+	if (result) {
+		runScript();
+	}
+});

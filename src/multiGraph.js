@@ -164,9 +164,17 @@ function getTargetScript()
 	}
 }
 
-script = document.createElement('script');
-script.setAttribute("type", "application/javascript");
-script.textContent = disableDefaultPlot(addAccountManage(addUnbind(getTargetScript().textContent)));
+function runScript() {
+	script = document.createElement('script');
+	script.setAttribute("type", "application/javascript");
+	script.textContent = disableDefaultPlot(addAccountManage(addUnbind(getTargetScript().textContent)));
 
-document.body.appendChild(script);
-document.body.removeChild(script);
+	document.body.appendChild(script);
+	document.body.removeChild(script);
+}
+
+getOption("multiGraph", function(option, result) {
+	if (result) {
+		runScript();
+	}
+});

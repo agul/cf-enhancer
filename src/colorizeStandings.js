@@ -135,10 +135,17 @@ function colorize()
 //
 // The following part is executed in userjs scope.
 //
+function runScript() {
+	script = document.createElement('script');
+	script.setAttribute("type", "application/javascript");
+	script.textContent = '$(document).ready(' + colorize + ');';
 
-script = document.createElement('script');
-script.setAttribute("type", "application/javascript");
-script.textContent = '$(document).ready(' + colorize + ');';
+	document.body.appendChild(script);
+	document.body.removeChild(script);
+}
 
-document.body.appendChild(script);
-document.body.removeChild(script);
+getOption("colorizeStandings", function(option, result) {
+	if (result) {
+		runScript();
+	}
+});
