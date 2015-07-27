@@ -1,4 +1,4 @@
-function colorize()
+function colorize(optColorize, optShowAttempts)
 {
 	// 0: target language name(s), which is/are shown in tooltip on cell
 	// 1: CSS class name, you can specify it as you like as long as no duplication
@@ -65,35 +65,39 @@ function colorize()
 		[ 'Scala',     'l-scala',   'background-color: #ccccff !important; border: solid #6666ff;' ],
 
 	];
+	
 	var dispname = function(arg) { return (arg.length >= 4) ? arg[3] : (arg[0] instanceof Array) ? arg[0][0] : arg[0]; };
 	var toarray = function(arg) { return (arg instanceof Array) ? arg : [arg]; };
+	
+	if (optColorize) {
 
-	$('table.standings').css('border-collapse', 'separate');
+		$('table.standings').css('border-collapse', 'separate');
 
-	var style = '<style>.color-legend { border: solid #e1e1e1 1px; }\n';
-	var legend = '<table style="margin-left: auto; margin-right: auto; border-collapse: separate;"><tr>';
+		var style = '<style>.color-legend { border: solid #e1e1e1 1px; }\n';
+		var legend = '<table style="margin-left: auto; margin-right: auto; border-collapse: separate;"><tr>';
 
-	for(var i = 0; i < spec.length; ++i) {
-		style += 'td.' + spec[i][1] + ' { ' + spec[i][2] + ' }\n';
-		legend += '<td style="padding: 0.5em;" class="color-legend ' + spec[i][1] + '">' + dispname(spec[i]) + '</td>';
-	}
-
-	style += 'td.highlight-by-lang { background-repeat: no-repeat; background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAAXNSR0IArs4c6QAAAv1QTFRFAIAAAAAAgIAAAACAgACAAICAgICAwMDA/wAAAP8A//8AAAD//wD/AP//////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzAABmAACZAADMAAD/ADMAADMzADNmADOZADPMADP/AGYAAGYzAGZmAGaZAGbMAGb/AJkAAJkzAJlmAJmZAJnMAJn/AMwAAMwzAMxmAMyZAMzMAMz/AP8AAP8zAP9mAP+ZAP/MAP//MwAAMwAzMwBmMwCZMwDMMwD/MzMAMzMzMzNmMzOZMzPMMzP/M2YAM2YzM2ZmM2aZM2bMM2b/M5kAM5kzM5lmM5mZM5nMM5n/M8wAM8wzM8xmM8yZM8zMM8z/M/8AM/8zM/9mM/+ZM//MM///ZgAAZgAzZgBmZgCZZgDMZgD/ZjMAZjMzZjNmZjOZZjPMZjP/ZmYAZmYzZmZmZmaZZmbMZmb/ZpkAZpkzZplmZpmZZpnMZpn/ZswAZswzZsxmZsyZZszMZsz/Zv8AZv8zZv9mZv+ZZv/MZv//mQAAmQAzmQBmmQCZmQDMmQD/mTMAmTMzmTNmmTOZmTPMmTP/mWYAmWYzmWZmmWaZmWbMmWb/mZkAmZkzmZlmmZmZmZnMmZn/mcwAmcwzmcxmmcyZmczMmcz/mf8Amf8zmf9mmf+Zmf/Mmf//zAAAzAAzzABmzACZzADMzAD/zDMAzDMzzDNmzDOZzDPMzDP/zGYAzGYzzGZmzGaZzGbMzGb/zJkAzJkzzJlmzJmZzJnMzJn/zMwAzMwzzMxmzMyZzMzMzMz/zP8AzP8zzP9mzP+ZzP/MzP///wAA/wAz/wBm/wCZ/wDM/wD//zMA/zMz/zNm/zOZ/zPM/zP//2YA/2Yz/2Zm/2aZ/2bM/2b//5kA/5kz/5lm/5mZ/5nM/5n//8wA/8wz/8xm/8yZ/8zM/8z///8A//8z//9m//+Z///M////eyQG1gAAAAF0Uk5TAEDm2GYAAAA/SURBVBjTXcjBEQAwBAVRqSZVqjS9mCCIb2/7SEYkB+IBvBH0Aew7+Dd4/yG+ID+hPoAXAbR36G8Ar4BPMv4CC5KBJwNtIOoAAAAASUVORK5CYII="); }\n</style>';
-	legend += '</tr></table>';
-
-	$('head').append(style);
-	$('div.contest-name').parent().after(legend);
-
-	if(navigator.userAgent.indexOf('Opera') != -1) { // Yes, I know this is ugly solution...
-		style = '<style>\n';
 		for(var i = 0; i < spec.length; ++i) {
-			var tw = $('td.'+ spec[i][1]).css('border-top-width');
-			var lw = $('td.'+ spec[i][1]).css('border-left-width');
-			var pos = tw + ' ' + lw;
-			style += 'td.' + spec[i][1] + ' { background-position: ' + pos + '; }\n';
+			style += 'td.' + spec[i][1] + ' { ' + spec[i][2] + ' }\n';
+			legend += '<td style="padding: 0.5em;" class="color-legend ' + spec[i][1] + '">' + dispname(spec[i]) + '</td>';
 		}
-		style += '</style>';
+
+		style += 'td.highlight-by-lang { background-repeat: no-repeat; background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAAXNSR0IArs4c6QAAAv1QTFRFAIAAAAAAgIAAAACAgACAAICAgICAwMDA/wAAAP8A//8AAAD//wD/AP//////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzAABmAACZAADMAAD/ADMAADMzADNmADOZADPMADP/AGYAAGYzAGZmAGaZAGbMAGb/AJkAAJkzAJlmAJmZAJnMAJn/AMwAAMwzAMxmAMyZAMzMAMz/AP8AAP8zAP9mAP+ZAP/MAP//MwAAMwAzMwBmMwCZMwDMMwD/MzMAMzMzMzNmMzOZMzPMMzP/M2YAM2YzM2ZmM2aZM2bMM2b/M5kAM5kzM5lmM5mZM5nMM5n/M8wAM8wzM8xmM8yZM8zMM8z/M/8AM/8zM/9mM/+ZM//MM///ZgAAZgAzZgBmZgCZZgDMZgD/ZjMAZjMzZjNmZjOZZjPMZjP/ZmYAZmYzZmZmZmaZZmbMZmb/ZpkAZpkzZplmZpmZZpnMZpn/ZswAZswzZsxmZsyZZszMZsz/Zv8AZv8zZv9mZv+ZZv/MZv//mQAAmQAzmQBmmQCZmQDMmQD/mTMAmTMzmTNmmTOZmTPMmTP/mWYAmWYzmWZmmWaZmWbMmWb/mZkAmZkzmZlmmZmZmZnMmZn/mcwAmcwzmcxmmcyZmczMmcz/mf8Amf8zmf9mmf+Zmf/Mmf//zAAAzAAzzABmzACZzADMzAD/zDMAzDMzzDNmzDOZzDPMzDP/zGYAzGYzzGZmzGaZzGbMzGb/zJkAzJkzzJlmzJmZzJnMzJn/zMwAzMwzzMxmzMyZzMzMzMz/zP8AzP8zzP9mzP+ZzP/MzP///wAA/wAz/wBm/wCZ/wDM/wD//zMA/zMz/zNm/zOZ/zPM/zP//2YA/2Yz/2Zm/2aZ/2bM/2b//5kA/5kz/5lm/5mZ/5nM/5n//8wA/8wz/8xm/8yZ/8zM/8z///8A//8z//9m//+Z///M////eyQG1gAAAAF0Uk5TAEDm2GYAAAA/SURBVBjTXcjBEQAwBAVRqSZVqjS9mCCIb2/7SEYkB+IBvBH0Aew7+Dd4/yG+ID+hPoAXAbR36G8Ar4BPMv4CC5KBJwNtIOoAAAAASUVORK5CYII="); }\n</style>';
+		legend += '</tr></table>';
+
 		$('head').append(style);
+		$('div.contest-name').parent().after(legend);
+
+		if(navigator.userAgent.indexOf('Opera') != -1) { // Yes, I know this is ugly solution...
+			style = '<style>\n';
+			for(var i = 0; i < spec.length; ++i) {
+				var tw = $('td.'+ spec[i][1]).css('border-top-width');
+				var lw = $('td.'+ spec[i][1]).css('border-left-width');
+				var pos = tw + ' ' + lw;
+				style += 'td.' + spec[i][1] + ' { background-position: ' + pos + '; }\n';
+			}
+			style += '</style>';
+			$('head').append(style);
+		}
 	}
 
 	for(var i = 0; i < spec.length; ++i) {
@@ -111,10 +115,14 @@ function colorize()
 					if (y < x) {
 						attempts = s.substring(y, x);
 					}
-					$(this).find(".cell-time").html(val + " (" + attempts + ")");
+					if (optShowAttempts) {
+						$(this).find(".cell-time").html(val + " (" + attempts + ")");
+					}
 				}
 			});
-			alltd.addClass(spec[i][1]);
+			if (optColorize) {
+				alltd.addClass(spec[i][1]);
+			} 
 		}
 		if(Codeforces.getCookie(key) == 1) {
 			$('td.'+ spec[i][1]).addClass('highlight-by-lang');
@@ -135,17 +143,19 @@ function colorize()
 //
 // The following part is executed in userjs scope.
 //
-function runScript() {
+function runScript(optColorize, optShowAttempts) {
 	script = document.createElement('script');
 	script.setAttribute("type", "application/javascript");
-	script.textContent = '$(document).ready(' + colorize + ');';
+	script.textContent = '$(document).ready(' + colorize + '(' + optColorize + ', ' + optShowAttempts + '));';
 
 	document.body.appendChild(script);
 	document.body.removeChild(script);
 }
 
 getOption("colorizeStandings", function(option, result) {
-	if (result) {
-		runScript();
-	}
+	var optColorize = result;
+	getOption("showAttempts", function(option, result) {
+		var optShowAttempts = result;
+		runScript(optColorize, optShowAttempts);
+	});
 });
