@@ -10,7 +10,7 @@ function extractScale(cont) {
 
 function getAccountData(id) {
 	var xhr = new XMLHttpRequest();
-	xhr.open('GET', 'http://' + window.location.host + '/profile/' + id, false);
+	xhr.open('GET', 'https://' + window.location.host + '/profile/' + id, false);
 	xhr.send(null);
 	if (xhr.status == 200) {
 		return [extractData(xhr.responseText), extractScale(xhr.responseText)];
