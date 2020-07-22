@@ -32,7 +32,7 @@
    "manifest_version": 2,
    "name": "Codeforces Enhancer",
    "short_name": "CF Enhancer",
-   "permissions": ["tabs", "storage"],
+   "permissions": ["storage"],
    "version": "1.2",
    "options_page": "options_page.html",
    "options_ui": {
