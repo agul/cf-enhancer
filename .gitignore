@@ -2,3 +2,4 @@
 screenshots/
 *.crx
 *.pem
+*.DS_Store
