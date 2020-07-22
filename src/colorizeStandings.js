@@ -5,64 +5,88 @@ function colorize(optColorize, optShowAttempts)
 	// 2: CSS style
 	// 3: optional, display name in legend. Not specified, the first target language name is used.
 	var spec = [
-	// Delphi 7
-		[ 'Delphi',    'l-delphi',  'background-color: #ffff99 !important; border: dashed #ff6633;' ],
-	// Free Pascal 2
-		[ 'FPC',       'l-fpc',     'background-color: #ffff99 !important;' ],
+		// C++
+			[ [
+				'C++',
+				'GNU C++',
+				'GNU C++11',
+				'GNU C++0x',
+				'MS C++',
+				'MS C++ 2010',
+				'MS C++ 2017',
+				'GNU C++14',
+				'GNU C++17',
+				'GNU C++17 (64)'
+			],	'l-gcpp',  'background-color: #ccffff !important; border: double #6666ff;' ],
+		// C
+			[ [
+				'C',
+				'GNU C',
+				'GNU C11'
+			],	'l-gcc',     'background-color: #ccffff !important; border: dotted #6666ff;' ],
 
-	// GNU C++11 4.9.2
-		[ [
-		 'GNU C++11',
-		 'GNU C++0x'], 'l-gcpp11',  'background-color: #ccffff !important; border: double #6666ff;' ],
-	// GNU C++ 4.9.2
-		[ 'GNU C++',   'l-gcpp',    'background-color: #ccffff !important;' ],
-	// GNU C11 4.9.2
-		[ 'GNU C11',   'l-gcc11',   'background-color: #ccffff !important; border: solid #6666ff;' ],
-	// GNU C 4.9.2
-		[ 'GNU C',     'l-gcc',     'background-color: #ccffff !important; border: dotted #6666ff;' ],
-	// Microsoft Visual C++ 2010
-		[ 'MS C++',    'l-mscpp',   'background-color: #ccffff !important; border: dashed #6666ff;' ],
+		// Java
+			[ [
+				'Java',
+				'Java 13',
+				'Java 12',
+				'Java 11',
+				'Java 10',
+				'Java 9',
+				'Java 8',
+				'Java 7',
+				'Java 6'
+			],	'l-java',   'background-color: #ffccff !important; border: dashed #ff33ff;' ],
+		// Kotlin
+			 [ 'Kotlin',	'l-kotlin',   'background-color: #ffccff !important;' ],
 
-	// Java 8
-		[ 'Java 8',    'l-java8',   'background-color: #ffccff !important; border: dashed #ff33ff;' ],
-	// Java 7
-		[ 'Java 7',    'l-java7',   'background-color: #ffccff !important; border: dotted #ff33ff;' ],
-	// Java 6
-		[ 'Java 6',    'l-java6',   'background-color: #ffccff !important;' ],
+		// C# Mono 2.10
+			[ [
+				'C#',
+				'Mono C#',
+				'MS C#'
+			],	'l-csharp','background-color: #ffcc99 !important; border: dashed #ff33ff;' ],
 
-	// C# Mono 2.10
-		[ 'Mono C#',   'l-mncsharp','background-color: #ffcc99 !important;' ],
-	// MS C# .Net 4
-		[ 'MS C#',     'l-mscsharp','background-color: #ffcc99 !important; border: dashed #ff33ff;' ],
+		// Python 2.7
+			[ 'Python 2',  'l-python2', 'background-color: #ccff99 !important; border: solid #00cc00;' ],
+		// Python 3.3
+			[ 'Python 3',  'l-python3', 'background-color: #ccff99 !important; border: dashed #00cc00;' ],
+		// PyPy 2.5.0
+		// PyPy 3.2.5
+			[ [
+			 	'PyPy 2',
+				'PyPy 3' 
+			], 'l-pypy',    'background-color: #ccff99 !important; border: dotted #00cc00;', 'PyPy' ],
 
-	// D DMD32 v2
-		[ 'D',         'l-d',       'background-color: #00ff99 !important;' ],
-	// Go 1.2
-		[ 'Go',        'l-go',      'background-color: #33cccc !important;' ],
+		// D DMD32 v2
+			[ 'D',         'l-d',       'background-color: #00ff99 !important;' ],
+		// Go 1.2
+			[ 'Go',        'l-go',      'background-color: #33cccc !important;' ],
+		// Rust
+			[ 'Rust',       'l-rust',     'background-color: #ffff99 !important;' ],
 
-	// JavaScript V8 3
-		[ 'JavaScript' , 'l-js',    'background-color: #ccff99 !important; border: dashed #ff33ff;', 'JS' ],
-	// Perl 5.12+
-		[ 'Perl',      'l-perl',    'background-color: #ccff99 !important; border: dashed #6666ff;' ],
-	// PHP 5.3
-		[ 'PHP',       'l-php',     'background-color: #ccff99 !important; border: solid #cc00ff;' ],
-	// Python 2.7
-		[ 'Python 2',  'l-python2', 'background-color: #ccff99 !important; border: solid #00cc00;' ],
-	// Python 3.3
-		[ 'Python 3',  'l-python3', 'background-color: #ccff99 !important; border: dashed #00cc00;' ],
-	// PyPy 2.5.0
-	// PyPy 3.2.5
-		[ ['PyPy 2',
-		   'PyPy 3' ], 'l-pypy',    'background-color: #ccff99 !important; border: dotted #00cc00;', 'PyPy' ],
-	// Ruby 2
-		[ 'Ruby',      'l-ruby',    'background-color: #ccff99 !important; border: solid #6666ff;' ],
+		// Pascal
+			[ [
+				'Pascal',
+				'Delphi',
+				'FPC'
+			],	'l-delphi',  'background-color: #ffff99 !important; border: dashed #ff6633;' ],
 
-	// Haskell GHC 7.6
-		[ 'Haskell',   'l-haskell', 'background-color: #ccccff !important; border: solid #cc00ff;' ],
-	// OCaml 4
-		[ 'Ocaml',     'l-ocaml',   'background-color: #ccccff !important; border: solid #00cc00;' ],
-	// Scala 2.11
-		[ 'Scala',     'l-scala',   'background-color: #ccccff !important; border: solid #6666ff;' ],
+		// JavaScript V8 3
+			[ 'JavaScript' , 'l-js',    'background-color: #ccff99 !important; border: dashed #ff33ff;', 'JS' ],
+		// Perl 5.12+
+			[ 'Perl',      'l-perl',    'background-color: #ccff99 !important; border: dashed #6666ff;' ],
+		// PHP 5.3
+			[ 'PHP',       'l-php',     'background-color: #ccff99 !important; border: solid #cc00ff;' ],
+		// Ruby 2
+			[ 'Ruby',      'l-ruby',    'background-color: #ccff99 !important; border: solid #6666ff;' ],
+
+		// Haskell GHC 7.6
+			[ 'Haskell',   'l-haskell', 'background-color: #ccccff !important; border: solid #cc00ff;' ],
+		// OCaml 4
+			[ 'Ocaml',     'l-ocaml',   'background-color: #ccccff !important; border: solid #00cc00;' ],
+		// Scala 2.11
+			[ 'Scala',     'l-scala',   'background-color: #ccccff !important; border: solid #6666ff;' ],
 
 	];
 	
