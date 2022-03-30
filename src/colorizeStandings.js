@@ -16,7 +16,9 @@ function colorize(optColorize, optShowAttempts)
 				'MS C++ 2017',
 				'GNU C++14',
 				'GNU C++17',
-				'GNU C++17 (64)'
+				'GNU C++17 (64)',
+				'GNU C++20',
+				'GNU C++20 (64)'
 			],	'l-gcpp',  'background-color: #ccffff !important; border: double #6666ff;' ],
 		// C
 			[ [
@@ -55,7 +57,8 @@ function colorize(optColorize, optShowAttempts)
 		// PyPy 3.2.5
 			[ [
 			 	'PyPy 2',
-				'PyPy 3' 
+				'PyPy 3',
+				'PyPy 3-64'
 			], 'l-pypy',    'background-color: #ccff99 !important; border: dotted #00cc00;', 'PyPy' ],
 
 		// D DMD32 v2
@@ -63,7 +66,10 @@ function colorize(optColorize, optShowAttempts)
 		// Go 1.2
 			[ 'Go',        'l-go',      'background-color: #33cccc !important;' ],
 		// Rust
-			[ 'Rust',       'l-rust',     'background-color: #ffff99 !important;' ],
+			[ [
+				'Rust',
+				'Rust 2021',
+			  ],       'l-rust',     'background-color: #ffff99 !important;' ],
 
 		// Pascal
 			[ [
