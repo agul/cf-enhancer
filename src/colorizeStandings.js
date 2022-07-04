@@ -16,7 +16,10 @@ function colorize(optColorize, optShowAttempts)
 				'MS C++ 2017',
 				'GNU C++14',
 				'GNU C++17',
-				'GNU C++17 (64)'
+				'GNU C++17 (64)',
+				'GNU C++20 (64)',
+				'Clang++17 Diagnostics',
+				'Clang++20 Diagnostics'
 			],	'l-gcpp',  'background-color: #ccffff !important; border: double #6666ff;' ],
 		// C
 			[ [
@@ -28,6 +31,7 @@ function colorize(optColorize, optShowAttempts)
 		// Java
 			[ [
 				'Java',
+				'Java 17',
 				'Java 13',
 				'Java 12',
 				'Java 11',
@@ -38,13 +42,20 @@ function colorize(optColorize, optShowAttempts)
 				'Java 6'
 			],	'l-java',   'background-color: #ffccff !important; border: dashed #ff33ff;' ],
 		// Kotlin
-			 [ 'Kotlin',	'l-kotlin',   'background-color: #ffccff !important;' ],
+			[ [
+				'Kotlin',
+				'Kotlin 1.4',
+				'Kotlin 1.5',
+				'Kotlin 1.6'
+			],	'l-kotlin',   'background-color: #ffccff !important;' ],
 
 		// C# Mono 2.10
 			[ [
 				'C#',
 				'Mono C#',
-				'MS C#'
+				'MS C#',
+				'C# 8',
+				'C# 10'
 			],	'l-csharp','background-color: #ffcc99 !important; border: dashed #ff33ff;' ],
 
 		// Python 2.7
@@ -55,31 +66,42 @@ function colorize(optColorize, optShowAttempts)
 		// PyPy 3.2.5
 			[ [
 			 	'PyPy 2',
-				'PyPy 3' 
-			], 'l-pypy',    'background-color: #ccff99 !important; border: dotted #00cc00;', 'PyPy' ],
+				'PyPy 3',
+				'PyPy 3-64'
+			],	'l-pypy',    'background-color: #ccff99 !important; border: dotted #00cc00;', 'PyPy' ],
 
 		// D DMD32 v2
 			[ 'D',         'l-d',       'background-color: #00ff99 !important;' ],
 		// Go 1.2
 			[ 'Go',        'l-go',      'background-color: #33cccc !important;' ],
 		// Rust
-			[ 'Rust',       'l-rust',     'background-color: #ffff99 !important;' ],
+			[ [
+				'Rust',
+				'Rust 2021'
+			],	'l-rust',     'background-color: #ffff99 !important;' ],
 
 		// Pascal
 			[ [
 				'Pascal',
 				'Delphi',
-				'FPC'
+				'FPC',
+				'PascalABC.NET'
 			],	'l-delphi',  'background-color: #ffff99 !important; border: dashed #ff6633;' ],
 
 		// JavaScript V8 3
-			[ 'JavaScript' , 'l-js',    'background-color: #ccff99 !important; border: dashed #ff33ff;', 'JS' ],
+			[ [
+				'JavaScript',
+				'Node.js'
+			],	'l-js',    'background-color: #ccff99 !important; border: dashed #ff33ff;', 'JS' ],
 		// Perl 5.12+
 			[ 'Perl',      'l-perl',    'background-color: #ccff99 !important; border: dashed #6666ff;' ],
 		// PHP 5.3
 			[ 'PHP',       'l-php',     'background-color: #ccff99 !important; border: solid #cc00ff;' ],
 		// Ruby 2
-			[ 'Ruby',      'l-ruby',    'background-color: #ccff99 !important; border: solid #6666ff;' ],
+			[ [
+				'Ruby',
+				'Ruby 3'
+			],	'l-ruby',    'background-color: #ccff99 !important; border: solid #6666ff;' ],
 
 		// Haskell GHC 7.6
 			[ 'Haskell',   'l-haskell', 'background-color: #ccccff !important; border: solid #cc00ff;' ],
